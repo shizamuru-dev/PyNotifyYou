@@ -28,7 +28,7 @@ Okay, let's move on to the installation! In fact, the installation is no differe
 
 You just need to install the library via pip:
 ```shell
-pip install py-notify-you
+pip install py_notify_you
 ```
 
 

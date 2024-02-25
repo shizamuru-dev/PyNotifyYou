@@ -63,7 +63,7 @@ You can also add a header for your notification using the method ```set_title()`
 import PyNotifyYou
 
 sender = PyNotifyYou.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
-sender.send("Your title")
+sender.set_title("Your title")
 sender.send('Your message!')
 ```
 

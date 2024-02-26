@@ -49,9 +49,9 @@ When creating, you will be required to enter the name of the topic, which will b
 
 Now all that remains is to write the code! For the easiest way to send notifications, you can use the code below:
 ```python
-import PyNotifyYou
+import py_notify_you
 
-sender = PyNotifyYou.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
+sender = py_notify_you.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
 sender.send('Your message!')
 ```
 **DON'T FORGET TO CHANGE THE LINK**
@@ -62,7 +62,7 @@ You can also add a header for your notification using the method ```set_title()`
 ```python
 import PyNotifyYou
 
-sender = PyNotifyYou.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
+sender = py_notify_you.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
 sender.set_title("Your title")
 sender.send('Your message!')
 ```

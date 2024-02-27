@@ -36,9 +36,11 @@ pip install py_notify_you
 
 And here it 's more interesting!
 
-You can see the simplest option for sending notifications below:
+You can see the simplest option for sending notifications below.
 
-To receive notifications, you must install the [Ntfy app](https://play.google.com/store/apps/details?id=io.heckel.ntfy&pli=1) on your phone!
+Так как в примере используется Ntfy вам необходимо выполнить следующие действия:
+pp on your phone(Android,IOS) or install PWA
+To receive notifications, you must install the Ntfy app on your phone([Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy),[IOS](https://apps.apple.com/us/app/ntfy/id1625396347)) or install [PWA](https://docs.ntfy.sh/subscribe/pwa/)!
 
 Then click on the "+" button in the lower right corner to create a topic and get link (It will be needed in the future)
 
@@ -46,6 +48,7 @@ When creating, you will be required to enter the name of the topic, which will b
 - The link Topic with the name PyNotifyMe will look like this - https://ntfy.sh/PyNotifyMe
 - The link Topic with the name PythonStore will look like this - https://ntfy.sh/PythonStore
 
+***
 
 Now all that remains is to write the code! For the easiest way to send notifications, you can use the code below:
 ```python

@@ -39,6 +39,7 @@ And here it 's more interesting!
 You can see the simplest option for sending notifications below.
 
 Since the example uses Ntfy you need to perform the following steps:
+
 To receive notifications, you must install the Ntfy app on your phone([Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy),[IOS](https://apps.apple.com/us/app/ntfy/id1625396347)) or install [PWA](https://docs.ntfy.sh/subscribe/pwa/)!
 
 Then click on the "+" button in the lower right corner to create a topic and get link (It will be needed in the future)

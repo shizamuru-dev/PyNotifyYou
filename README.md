@@ -70,6 +70,4 @@ sender.set_title("Your title")
 sender.send('Your message!')
 ```
 
-
-
-
+More information can be found on the project's [wiki](https://github.com/shizamuru-dev/PyNotifyYou/wiki)

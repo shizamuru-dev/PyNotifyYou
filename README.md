@@ -70,8 +70,5 @@ sender.set_title("Your title")
 sender.send('Your message!')
 ```
 
-<<<<<<< HEAD
 More information can be found on the project's [wiki](https://github.com/shizamuru-dev/PyNotifyYou/wiki)
-=======
-More information can be found on the project's [wiki](https://github.com/shizamuru-dev/PyNotifyYou/wiki)
->>>>>>> 83c61adefea64f07b2cfdaddc69b12298ccaeb79
+

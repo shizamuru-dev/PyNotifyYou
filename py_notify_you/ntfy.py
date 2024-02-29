@@ -54,7 +54,7 @@ class Ntfy:
             headers = {}
 
         if title is not None:
-            headers.update({'Title': title})
+            headers.update({'Title': title.encode('utf-8')})
 
         if priority is not None:
             if priority < 1 or priority > 5:
@@ -90,7 +90,7 @@ class Ntfy:
         :param title: The headline of the message. Located above the main text and always in bold
         """
 
-        self.__headers.update({'Title': title})
+        self.__headers.update({'Title': title.encode('utf-8')})
 
     def set_priority(self, priority: int) -> None:
         """

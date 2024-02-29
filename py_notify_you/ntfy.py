@@ -31,7 +31,7 @@ class Ntfy:
 
     def send_unique(self, message: str = "Some text...", title: str = None,
                     priority: int = None, tags: list[str] = None,
-                    click_action: str = None,  icon: str = None,
+                    click_action: str = None, icon: str = None,
                     attachment_from_link: str = None, headers: dict = None):
         """
         Send unique notifications with their own unique headers
@@ -90,7 +90,8 @@ class Ntfy:
         :param title: The headline of the message. Located above the main text and always in bold
         """
 
-        self.__headers.update({'Title': title.encode('utf-8')})
+        self.__headers.update(
+            {'Title': title.encode('utf-8')})  # encode required to support languages other than English
 
     def set_priority(self, priority: int) -> None:
         """

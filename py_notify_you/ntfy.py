@@ -32,7 +32,7 @@ class Ntfy:
     def send_unique(self, message: str = "Some text...", title: str = None,
                     priority: int = None, tags: list[str] = None,
                     click_action: str = None, icon: str = None,
-                    attachment_from_link: str = None, headers: dict = None):
+                    attachment_from_link: str = None, headers: dict = None, markdown: bool = None):
         """
         Send unique notifications with their own unique headers
 
@@ -48,10 +48,11 @@ class Ntfy:
         :param icon: (optional)
         :param attachment_from_link: (optional)
         :param headers: (optional)
+        :param markdown: (optional)
         """
 
         if headers is None:
-            headers = {}
+            headers = {"Markdown": "yes"}
 
         if title is not None:
             headers.update({'Title': title.encode('utf-8')})
@@ -73,6 +74,9 @@ class Ntfy:
 
         if attachment_from_link is not None:
             headers.update({'Attach': attachment_from_link})
+
+        if markdown is not None:
+            headers.update({'Markdown': str(markdown)})
 
         payload = message.encode('utf-8')  # encode required to support languages other than English
 
@@ -157,3 +161,4 @@ class Ntfy:
         """
 
         self.__headers.clear()
+        self.__headers.update({"Markdown": "yes"})

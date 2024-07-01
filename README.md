@@ -67,7 +67,7 @@ import py_notify_you
 
 sender = py_notify_you.Ntfy("https://ntfy.sh/YourLink") #  Here you should replace the link with your own
 sender.set_title("Your title")
-sender.send('Your message!')
+sender.send_template('Your message!')
 ```
 
 More information can be found on the project's [wiki](https://github.com/shizamuru-dev/PyNotifyYou/wiki)

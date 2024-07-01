@@ -1,4 +1,17 @@
-import requests
+import httpx
+import base64
+
+
+class NtfyExceptions:
+    class MailException(Exception):
+        def __init__(self, message: str = None):
+            self.message = message
+            super().__init__(message)
+
+    class AuthorizationException(Exception):
+        def __init__(self, message: str = None):
+            self.message = message
+            super().__init__(message)
 
 
 class Ntfy:
@@ -10,10 +23,31 @@ class Ntfy:
 
     __headers: dict = {}
 
-    def __init__(self, link: str = None):
+    def __init__(self, link: str = None, username: str = None, password: str = None, token: str = None):
         self.link = link
+        if not (username and password):
+            if token:
+                try:
+                    req = httpx.get(self.link, headers={"Authorization": f"Bearer {token}"})
+                    if req.status_code == 401:
+                        raise NtfyExceptions.AuthorizationException("Token is invalid")
+                except Exception as e:
+                    print(f"Exception!{e.__str__()}")
 
-    def send(self, message: str = "Some message...") -> None:
+                self.__headers.update({"Authorization": f"Bearer {token}"})
+        else:
+            token = base64.b64encode(bytes(f"{username}:{password}", "utf-8"))
+
+            try:
+                req = httpx.get(self.link, headers={"Authorization": f"Basic {token}"})
+                if req.status_code == 401:
+                    raise NtfyExceptions.AuthorizationException("Invalid credentials")
+            except Exception as e:
+                print(f"Exception!{e.__str__()}")
+
+            self.__headers.update({"Authorization": f"Basic {token}"})
+
+    def send_template(self, message: str = "Some message...") -> None:
         """
         Send notification
 
@@ -23,16 +57,18 @@ class Ntfy:
         payload = message.encode('utf-8')  # encode required to support languages other than English
 
         try:
-            req = requests.post(self.link, data=payload, headers=self.__headers)
+            # noinspection PyTypeChecker
+            req = httpx.post(self.link, data=payload, headers=self.__headers)
             if req.status_code != 200:
                 print(f"Error! Code: {req.status_code}")
         except Exception as e:
             print(f"Exception!{e.__str__()}")
 
-    def send_unique(self, message: str = "Some text...", title: str = None,
-                    priority: int = None, tags: list[str] = None,
-                    click_action: str = None, icon: str = None,
-                    attachment_from_link: str = None, headers: dict = None, markdown: bool = None):
+    def send(self, message: str = "Some text...", title: str = None,
+             priority: int = None, tags: list[str] = None,
+             click_action: str = None, icon: str = None,
+             attachment_from_link: str = None, headers: dict = None,
+             markdown: bool = None, email: str = None):
         """
         Send unique notifications with their own unique headers
 
@@ -49,6 +85,7 @@ class Ntfy:
         :param attachment_from_link: (optional)
         :param headers: (optional)
         :param markdown: (optional)
+        :param email: (optional)
         """
 
         if headers is None:
@@ -78,10 +115,17 @@ class Ntfy:
         if markdown is not None:
             headers.update({'Markdown': str(markdown)})
 
+        if email is not None:
+            if "@" in email:
+                headers.update({'Email': email})
+            else:
+                raise NtfyExceptions.MailException("Email address is not valid!")
+
         payload = message.encode('utf-8')  # encode required to support languages other than English
 
         try:
-            req = requests.post(self.link, data=payload, headers=headers)
+            # noinspection PyTypeChecker
+            req = httpx.post(self.link, data=payload, headers=headers)
             if req.status_code != 200:
                 print(f"Error! Code: {req.status_code}")
         except Exception as e:
@@ -159,6 +203,11 @@ class Ntfy:
         """
         Clear all headers
         """
-
-        self.__headers.clear()
-        self.__headers.update({"Markdown": "yes"})
+        if self.__headers["Authorization"]:
+            auth = {"Authorization": self.__headers["Authorization"]}
+            self.__headers.clear()
+            self.__headers.update({"Markdown": "yes"})
+            self.__headers.update(auth)
+        else:
+            self.__headers.clear()
+            self.__headers.update({"Markdown": "yes"})

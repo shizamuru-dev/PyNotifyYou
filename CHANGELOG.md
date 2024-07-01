@@ -1,23 +1,17 @@
-# New features #
+# Changelog #
+
+### Version 1.0.4 ###
+* Add auth support
+* Rename some methods
+* Add mail support
+* Add custom errors
+* Migrate to httpx lib
 
 ### Version 1.0.3 ###
-* None
+* Fix markdown was not supported
 ***
 ### Version 1.0.2 ###
-* None
-***
-### Version 1.0.1 ###
-* Release
-
-<br><br><br><br>
-
-# Bug fixes #
-
-### Version 1.0.3 ###
-* Markdown was not supported
-***
-### Version 1.0.2 ###
-* No title support for languages other than English, and emoji
+* Fix no title support for languages other than English, and emoji
 ***
 ### Version 1.0.1 ###
 * Release

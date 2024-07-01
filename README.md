@@ -70,5 +70,5 @@ sender.set_title("Your title")
 sender.send_template('Your message!')
 ```
 
-More information can be found on the project's [wiki](https://github.com/shizamuru-dev/PyNotifyYou/wiki)
+More information can be found on the project's [wiki](https://gitlab.com/shizamuru/PyNotifyYou/-/wikis/home)
 

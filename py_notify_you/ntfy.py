@@ -181,6 +181,18 @@ class Ntfy:
 
         self.__headers.update({'Icon': icon})
 
+    def set_email(self, email: str) -> None:
+        """
+        Set mail to which notifications will be duplicated
+
+        :param email: target email
+        """
+        if email is not None:
+            if "@" in email:
+                self.__headers.update({'Email': email})
+            else:
+                raise NtfyExceptions.MailException("Email address is not valid!")
+
     def add_attachment_from_link(self, attachment: str) -> None:
         """
         Add attachment from link
@@ -192,9 +204,9 @@ class Ntfy:
 
     def set_headers(self, headers: dict) -> None:
         """
+        Replaces already installed headers that have not been transmitted
 
         :param headers:
-        :return:
         """
         self.__headers.clear()
         self.__headers = headers

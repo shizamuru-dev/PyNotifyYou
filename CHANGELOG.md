@@ -1,5 +1,10 @@
 # Changelog #
 ***
+### Version 1.0.7 ###
+* Sync version from pypi and git
+* Rename message to text
+* Update httpx to last version
+
 ### Version 1.0.5e ###
 * Add a missing method description
 

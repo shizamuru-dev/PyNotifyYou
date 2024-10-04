@@ -4,14 +4,14 @@ import base64
 
 class NtfyExceptions:
     class MailException(Exception):
-        def __init__(self, message: str = None):
-            self.message = message
-            super().__init__(message)
+        def __init__(self, text: str = None):
+            self.text = text
+            super().__init__(text)
 
     class AuthorizationException(Exception):
-        def __init__(self, message: str = None):
-            self.message = message
-            super().__init__(message)
+        def __init__(self, text: str = None):
+            self.text = text
+            super().__init__(text)
 
 
 class Ntfy:
@@ -47,11 +47,11 @@ class Ntfy:
 
             self.__headers.update({"Authorization": f"Basic {token}"})
 
-    def send_template(self, message: str = "Some message...") -> None:
+    def send_template(self, text: str = "Some message...") -> None:
         """
         Send notification
 
-        :param message: The main body of the message has markdown support
+        :param text: The main body of the message has markdown support
         """
 
         payload = message.encode('utf-8')  # encode required to support languages other than English
@@ -64,7 +64,7 @@ class Ntfy:
         except Exception as e:
             print(f"Exception!{e.__str__()}")
 
-    def send(self, message: str = "Some text...", title: str = None,
+    def send(self, text: str = "Some text...", title: str = None,
              priority: int = None, tags: list[str] = None,
              click_action: str = None, icon: str = None,
              attachment_from_link: str = None, headers: dict = None,
@@ -76,7 +76,7 @@ class Ntfy:
 
 
 
-        :param message: (compulsory)
+        :param text: (compulsory)
         :param title: (optional)
         :param priority: (optional)
         :param tags: (optional)
@@ -121,7 +121,7 @@ class Ntfy:
             else:
                 raise NtfyExceptions.MailException("Email address is not valid!")
 
-        payload = message.encode('utf-8')  # encode required to support languages other than English
+        payload = text.encode('utf-8')  # encode required to support languages other than English
 
         try:
             # noinspection PyTypeChecker

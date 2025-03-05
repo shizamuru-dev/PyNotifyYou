@@ -16,9 +16,16 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-stages:          # List of stages for jobs, and their order of execution
+stages:
+  - pre-build          # List of stages for jobs, and their order of execution
   - build
 
+pre-build-job:
+  stage: pre-build
+  script:
+    - curl -sSL https://install.python-poetry.org | python3 -
+    - export "$HOME/.local/bin"
+    
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:

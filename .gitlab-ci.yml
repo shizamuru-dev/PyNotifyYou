@@ -24,7 +24,7 @@ pre-build-job:
   stage: pre-build
   script:
     - curl -sSL https://install.python-poetry.org | python3 -
-    - export "$HOME/.local/bin"
+    - export PATH="/root/.local/bin:$PATH"
     
 build-job:       # This job runs in the build stage, which runs first.
   stage: build

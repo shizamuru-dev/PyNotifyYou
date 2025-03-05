@@ -54,7 +54,7 @@ class Ntfy:
         :param text: The main body of the message has markdown support
         """
 
-        payload = message.encode('utf-8')  # encode required to support languages other than English
+        payload = text.encode('utf-8')  # encode required to support languages other than English
 
         try:
             # noinspection PyTypeChecker

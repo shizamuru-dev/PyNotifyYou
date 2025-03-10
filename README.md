@@ -20,7 +20,6 @@ Let's add some convenience for navigating through the repository:
 # Providers
 I plan to implement support for several ways to receive notifications, and I will simply call them providers for convenience. 👌
 
-**At the moment**, the project supports only one provider: **Ntfy.sh**
 
 # Installing
 
@@ -36,11 +35,9 @@ pip install py_notify_you
 
 And here it 's more interesting!
 
-You can see the simplest option for sending notifications below.
+The example below will use Ntfy.sh
 
-Since the example uses Ntfy you need to perform the following steps:
-
-To receive notifications, you must install the Ntfy app on your phone([Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy),[IOS](https://apps.apple.com/us/app/ntfy/id1625396347)) or install [PWA](https://docs.ntfy.sh/subscribe/pwa/)!
+To work with Ntfy.sh, you need to first install the Ntfy app on your phone([Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy),[IOS](https://apps.apple.com/us/app/ntfy/id1625396347)) or install [PWA](https://docs.ntfy.sh/subscribe/pwa/)!
 
 Then click on the "+" button in the lower right corner to create a topic and get link (It will be needed in the future)
 
@@ -70,5 +67,6 @@ sender.set_title("Your title")
 sender.send_template('Your message!')
 ```
 
-More information can be found on the project's [wiki](https://gitlab.com/shizamuru/PyNotifyYou/-/wikis/home)
+
+More information, e.g. about other providers can be found on the project's [wiki](https://gitlab.com/shizamuru/PyNotifyYou/-/wikis/home)
 

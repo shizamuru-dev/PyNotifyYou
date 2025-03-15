@@ -79,13 +79,13 @@ class PushBulletDevice:
         object.__setattr__(device, "_PushBulletDevice__token", token)
         return device
 
-    def send(self, title: str, body: str, link: str = None):
+    def send(self, title: str, text: str = None, link: str = None):
         """
         Sends a text notification to the device.
 
         Args:
             title (str): Notification title.
-            body (str): Notification text.
+            text (str): Notification text.
             link (str, optional): URL link to add to the notification.
 
         Raises:
@@ -96,7 +96,7 @@ class PushBulletDevice:
                 "type": "note",
                 "device_iden": self.iden,
                 "title": title,
-                "body": body,
+                "body": text,
             }
 
             if link:
@@ -112,13 +112,13 @@ class PushBulletDevice:
         except Exception as e:
             print(f"Exception occurred: {str(e)}")
 
-    def send_file(self, title: str, body: str, file_path: str, link: str = None):
+    def send_file(self, title: str, file_path: str, text: str = None, link: str = None):
         """
         Sends a file to the device.
 
         Args:
             title (str): Notification title.
-            body (str): Notification text.
+            text (str): Notification text.
             file_path (str): Path to the file being sent.
             link (str, optional): URL link to add to the notification.
 
@@ -158,7 +158,7 @@ class PushBulletDevice:
                 "type": "file",
                 "device_iden": self.iden,
                 "title": title,
-                "body": body,
+                "body": text,
                 "file_name": file_name,
                 "file_type": mime_type,
                 "file_url": upload_request["file_url"]

@@ -1,5 +1,12 @@
 # Changelog #
 ***
+### Version 2.0.1 ###
+* Rename vars in PushBullet
+
+### Version 2.0.0 ###
+* Add PushBullet provider
+* Small rename vars in Ntfy
+
 ### Version 1.0.7 ###
 * Sync version from pypi and git
 * Rename message to text
